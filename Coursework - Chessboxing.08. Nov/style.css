@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Kanit:wght@700&display=swap');
+
+/* Design constants */
+html {
+
+    /* Harmonic scale */
+    --ratio: 1.4142356;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio)); /* Larger title font size */
+    --s-3: calc(var(--s-2) / var(--ratio)); /* Smaller title font size */
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem; /* table font size */
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+
+    /* white spaces */
+    --page-margin: var(--s4);
+    --vertical-space: var(--s2);
+    --menu-space: var(--s0);
+
+    /* colors */
+    --frame-color: #ccc;
+   
+}
+
+/* Adjust page margin for small dislays */
+@media only screen and (max-width: 600px) {
+    :root {
+        --page-margin: var(--s-2);
+    }
+}
+
+/*** Page layout **********************************************************************************/
+/* Layout */
+body{  
+  background-color: #d9d9d9;
+  color: #000;
+  font-family:'Crimson Text', Georgia, serif;
+  font-size: var(--s0);
+  margin: 0;
+  padding: 0;
+}
+
+.all,
+main{
+    max-width: 100ch;
+    margin: 0 auto;
+    background-color: #ffffff ;
+}
+
+main{
+    padding: calc(var(--page-margin) * 0.3) var(--page-margin) var(--s1) var(--page-margin);
+} 
+
+/* Header */
+header {
+  max-width: 100ch;
+  background-image: url('chessboxing_background.jpg');
+  background-size: auto 120%; 
+  background-repeat:no-repeat ;
+  background-position: center top;
+  background-color: black;
+  padding: var(--page-margin) var(--page-margin) 0 var(--page-margin);
+  margin: 0 auto;
+  color: white;
+  position: relative;
+}
+
+header .container {
+  position: relative;
+  margin: 0 auto;
+}
+
+header h1 {
+    top: 50%;
+    font-family: 'Kanit', sans-serif;
+    font-size: var(--s4);
+    margin: 0;
+    color: white;
+    text-align: left;
+    position: relative;
+    transform: translateY(-40%);
+}
+
+/* Navbar */
+header nav {
+    margin-left: auto;
+    align-items: flex-end;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--menu-space) 0 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--menu-space);
+    font-family: 'Kanit', sans-serif;
+}
+   
+header a {
+    text-decoration: none;
+    color: white;
+    padding: 0.3em 0.6em;
+    transition: 0.3s;
+}
+
+header a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: yellow;
+    text-decoration: none;
+}
+
+/* Typography and links */
+h1, h2, h3 {
+    font-family: 'Kanit', sans-serif;
+    color: #000;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* chess piece symbols */
+#history h2::before, 
+#rules h2::before, 
+#training h2::before, 
+#man-vs-machine h2::before {
+    font-size: 2.2em;
+    color: #000000;
+}
+
+#history h2::before {content: "\2655";}
+#rules h2::before {content: "\265a";}
+#training h2::before {content: "\2656";}
+#man-vs-machine h2::before {content: "\265d";}
+
+a {
+    color: #0000ee;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+figure img, iframe {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--frame-color);
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+}
+
+figcaption {
+    color: #555;
+    text-align: center;
+    margin-top: 0.5em;
+    font-style: italic;
+    font-size: var(--s0); 
+    line-height: 1.6;
+    color: inherit;    
+}
+
+.pic1{
+    float: right;
+    width: 400px;
+    padding: var(--s1);
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    margin-left: var(--vertical-space);
+    margin-bottom: var(--vertical-space);
+    margin-right: 0;
+    margin-top: -0.2em;
+}
+
+.pic2{
+    float: right;
+    width: 400px;
+    display: block;
+    padding: var(--s1);
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    margin-left: var(--vertical-space);
+    margin-bottom: var(--vertical-space);
+    margin-right: 0;
+    clear: right;
+}
+
+.pic2 iframe{
+    width: 100%;
+    border: none;
+    aspect-ratio: 16 / 9;
+}
+
+/* Float image for large screens */
+figure.pic1 img,
+figure.pic2 img {
+    margin: 0;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid var(--frame-color);
+    padding: 0.5em;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+}
+ 
+/* Timeline table */
+#history > div:last-of-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-content: center;
+    padding: var(--s1) var(--s2);
+    border: 3px solid #dadada; 
+    border-radius: 24px;
+    background-color: #fff;
+    margin: 0 auto var(--s2);
+    width: fit-content;
+    max-width: 100%;    
+}
+
+#history > div:last-of-type > p:first-of-type {
+    grid-column: 1 / -1;
+    margin: 0 0 var(--s-1);
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2em; 
+    color: #000000;
+    font-family: 'Georgia', serif;
+}
+
+#history > div:last-of-type table {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border-top: 1px solid #4a5568; 
+    border-bottom: 1px solid #4a5568;    
+}
+
+#history > div:last-of-type th{
+   background-color: transparent;
+   border: none;
+   border-left: none;
+   border-right: none;
+   border-top: none;
+   border-bottom: 1.5px solid #e1e7ef;
+   padding: 0.5em 0.8em;
+}
+
+#history > div:last-of-type td {
+    border: none;
+    padding: 0.5em 0.8em;
+}
+
+#history > div:last-of-type tr + tr td {
+    border-top: 1.5px solid #e1e7ef; 
+}
+
+#history > div:last-of-type tr:last-child td {
+    border-bottom: 1.5px solid #e1e7ef;
+}
+
+#history > div:last-of-type img {
+    width: 100%;
+    max-width: 100%;
+    align-self: center;
+    border: none;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    font-size: var(--s0);
+    color: #fff;
+    text-align: center;
+    padding: var(--s3) var(--s1);
+    margin: var(--s1) 0 0;
+}
+
+footer p {
+    color: #fff;
+    margin: 0.5em 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #ccc;
+}
+
+/* Responsive styles*/
+/* Vertical menu for Big screens */
+@media only screen and (max-width: 900px) {
+    #history > div:last-of-type {
+        grid-template-columns: 1fr;
+    }
+}
+ 
+/* Vertical menu for small screens */
+@media only screen and (max-width: 600px) {
+    header {
+        background-size: contain;
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 300px;
+    }
+
+    header ul {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0;
+        width: 100%;
+    }
+
+    header li {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        transition: all 0.3s ease;
+    }
+
+    header li:hover {
+        background-color: rgba(128, 128, 128, 0.5);
+        width: 100%;
+    }
+
+    header a {
+        display: block;
+        text-align: right;
+        padding: 0.5em 1em;
+        transition: color 0.3s ease;
+        width: 100%;
+    }
+
+    header li:hover a {
+        color: yellow;
+    }
+
+    header h1 {
+        font-size: var(--s3);
+        text-align: left;
+        position: static;
+        top:auto;
+        transform: none;
+        margin-top: 0.5em;
+    }
+
+    figure img {
+        float: none;
+        margin: 0 auto var(--vertical-space);
+        display: block;
+    }
+
+    .pic1, .pic2 {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        margin: 0 0 var(--vertical-space) 0;
+    }
+
+    .pic2 iframe {
+        width: 100%;
+    }
+
+    main {
+        padding: var(--page-margin);
+    }
+}
